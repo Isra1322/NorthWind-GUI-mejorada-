@@ -1,0 +1,15 @@
+global using NorthWind.Sales.Backend.BusinessObjects.Aggregates;
+global using NorthWind.Sales.Entities.Dtos.Common;
+global using NorthWind.Sales.Entities.Dtos.CustomerSearch;
+global using NorthWind.Sales.Entities.Dtos.ProductSearch;
+global using NorthWind.Sales.Entities.Dtos.OrderInvoice;
+global using NorthWind.Sales.Backend.BusinessObjects.Interfaces.CreateOrder;
+global using NorthWind.Sales.Backend.BusinessObjects.Interfaces.CustomerSearch;
+global using NorthWind.Sales.Backend.BusinessObjects.Interfaces.ProductSearch;
+global using NorthWind.Sales.Backend.BusinessObjects.Interfaces.GetOrderInvoice;
+global using NorthWind.Sales.Backend.BusinessObjects.Interfaces.GetOrdersByCustomer;
+global using NorthWind.Sales.Backend.Presenters.CreateOrder;
+global using NorthWind.Sales.Backend.Presenters.CustomerSearch;
+global using NorthWind.Sales.Backend.Presenters.ProductSearch;
+global using NorthWind.Sales.Backend.Presenters.GetOrderInvoice;
+global using NorthWind.Sales.Backend.Presenters.GetOrdersByCustomer;

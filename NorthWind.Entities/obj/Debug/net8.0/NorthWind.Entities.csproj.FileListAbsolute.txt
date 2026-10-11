@@ -1,0 +1,12 @@
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Entities\bin\Debug\net8.0\NorthWind.Entities.deps.json
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Entities\bin\Debug\net8.0\NorthWind.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Entities\bin\Debug\net8.0\NorthWind.Entities.pdb
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Entities\obj\Debug\net8.0\NorthWind.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Entities\obj\Debug\net8.0\NorthWind.Entities.AssemblyInfoInputs.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Entities\obj\Debug\net8.0\NorthWind.Entities.AssemblyInfo.cs
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Entities\obj\Debug\net8.0\NorthWind.Entities.csproj.CoreCompileInputs.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Entities\obj\Debug\net8.0\NorthWind.Entities.sourcelink.json
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Entities\obj\Debug\net8.0\NorthWind.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Entities\obj\Debug\net8.0\refint\NorthWind.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Entities\obj\Debug\net8.0\NorthWind.Entities.pdb
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Entities\obj\Debug\net8.0\ref\NorthWind.Entities.dll

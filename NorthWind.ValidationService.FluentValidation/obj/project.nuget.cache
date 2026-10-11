@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "2yDTH3tzd/4=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\stali\\Documents\\Aplicaciones_Moviles\\NorthWind (GUI mejorada)\\NorthWind.ValidationService.FluentValidation\\NorthWind.ValidationService.FluentValidation.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\stali\\.nuget\\packages\\fluentvalidation\\11.9.2\\fluentvalidation.11.9.2.nupkg.sha512",
+    "C:\\Users\\stali\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.12\\microsoft.extensions.dependencyinjection.abstractions.10.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

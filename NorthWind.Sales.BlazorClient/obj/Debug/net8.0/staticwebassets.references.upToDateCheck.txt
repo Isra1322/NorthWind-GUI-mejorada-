@@ -1,0 +1,3 @@
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind\NorthWind.Membership.Frontend.RazorViews\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind\NorthWind.RazorComponents\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind\NorthWind.Sales.Frontend.Views\obj\Debug\net8.0\staticwebassets.build.json

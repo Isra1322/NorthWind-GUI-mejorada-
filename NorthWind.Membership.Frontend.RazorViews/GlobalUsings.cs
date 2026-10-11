@@ -1,0 +1,9 @@
+global using System.Net.Http.Json;
+global using Microsoft.AspNetCore.Components.Forms;
+global using NorthWind.Membership.Entities.Dtos.UserRegistration;
+global using NorthWind.Membership.Entities.Dtos.UserLogin;
+global using NorthWind.Membership.Entities.ValueObjects;
+global using NorthWind.Validation.Entities.Abstractions;
+global using NorthWind.Validation.Entities.Enums;
+global using NorthWind.Validation.Entities.Interfaces;
+global using NorthWind.Validation.Entities.ValueObjects;

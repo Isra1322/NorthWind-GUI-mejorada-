@@ -1,0 +1,16 @@
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\bin\Debug\net8.0\NorthWind.Exceptions.Entities.deps.json
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\bin\Debug\net8.0\NorthWind.Exceptions.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\bin\Debug\net8.0\NorthWind.Exceptions.Entities.pdb
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\bin\Debug\net8.0\NorthWind.Validation.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\bin\Debug\net8.0\NorthWind.Validation.Entities.pdb
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\obj\Debug\net8.0\NorthWind.Exceptions.Entities.csproj.AssemblyReference.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\obj\Debug\net8.0\NorthWind.Exceptions.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\obj\Debug\net8.0\NorthWind.Exceptions.Entities.AssemblyInfoInputs.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\obj\Debug\net8.0\NorthWind.Exceptions.Entities.AssemblyInfo.cs
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\obj\Debug\net8.0\NorthWind.Exceptions.Entities.csproj.CoreCompileInputs.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\obj\Debug\net8.0\NorthWind.Exceptions.Entities.sourcelink.json
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\obj\Debug\net8.0\NorthWin.65329DA7.Up2Date
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\obj\Debug\net8.0\NorthWind.Exceptions.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\obj\Debug\net8.0\refint\NorthWind.Exceptions.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\obj\Debug\net8.0\NorthWind.Exceptions.Entities.pdb
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Exceptions.Entities\obj\Debug\net8.0\ref\NorthWind.Exceptions.Entities.dll

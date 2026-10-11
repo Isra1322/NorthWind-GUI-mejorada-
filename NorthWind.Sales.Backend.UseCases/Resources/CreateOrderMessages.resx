@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="CustomerIdNotFoundError" xml:space="preserve">
+    <value>El identificador de cliente proporcionado no existe.</value>
+  </data>
+  <data name="CustomerWithBalanceErrorTemplate" xml:space="preserve">
+    <value>El cliente {0} tiene un adeudo pendiente de {1}.</value>
+  </data>
+  <data name="ProductIdNotFoundErrorTemplate" xml:space="preserve">
+    <value>El producto {0} no existe.</value>
+  </data>
+  <data name="UnitsInStockLessThanQuantityErrorTemplate" xml:space="preserve">
+    <value>Cantidad {0} de {1} no suficiente para producto {2}.</value>
+  </data>
+</root>

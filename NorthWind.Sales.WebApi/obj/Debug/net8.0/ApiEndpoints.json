@@ -1,0 +1,70 @@
+[
+  {
+    "ContainingType": "Microsoft.AspNetCore.Builder.CreateOrderController",
+    "Method": "CreateOrder",
+    "RelativePath": "CreateOrder",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderDto",
+        "Type": "NorthWind.Sales.Entities.Dtos.CreateOrder.CreateOrderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Microsoft.AspNetCore.Builder.UserLoginController\u002B\u003C\u003Ec",
+    "Method": "\u003CUseUserLoginController\u003Eb__0_0",
+    "RelativePath": "user/Login",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userCredentials",
+        "Type": "NorthWind.Membership.Entities.Dtos.UserLogin.UserCredentialsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Microsoft.AspNetCore.Builder.UserRegistrationController\u002B\u003C\u003Ec",
+    "Method": "\u003CUseUserRegistrationController\u003Eb__0_0",
+    "RelativePath": "user/Register",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userData",
+        "Type": "NorthWind.Membership.Entities.Dtos.UserRegistration.UserRegistrationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Validation.Entities\bin\Debug\net8.0\NorthWind.Validation.Entities.deps.json
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Validation.Entities\bin\Debug\net8.0\NorthWind.Validation.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Validation.Entities\bin\Debug\net8.0\NorthWind.Validation.Entities.pdb
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Validation.Entities\obj\Debug\net8.0\NorthWind.Validation.Entities.csproj.AssemblyReference.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Validation.Entities\obj\Debug\net8.0\NorthWind.Validation.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Validation.Entities\obj\Debug\net8.0\NorthWind.Validation.Entities.AssemblyInfoInputs.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Validation.Entities\obj\Debug\net8.0\NorthWind.Validation.Entities.AssemblyInfo.cs
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Validation.Entities\obj\Debug\net8.0\NorthWind.Validation.Entities.csproj.CoreCompileInputs.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Validation.Entities\obj\Debug\net8.0\NorthWind.Validation.Entities.sourcelink.json
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Validation.Entities\obj\Debug\net8.0\NorthWind.Validation.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Validation.Entities\obj\Debug\net8.0\refint\NorthWind.Validation.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Validation.Entities\obj\Debug\net8.0\NorthWind.Validation.Entities.pdb
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Validation.Entities\obj\Debug\net8.0\ref\NorthWind.Validation.Entities.dll

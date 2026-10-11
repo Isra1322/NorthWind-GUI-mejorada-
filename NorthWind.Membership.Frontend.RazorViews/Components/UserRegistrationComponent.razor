@@ -1,0 +1,49 @@
+@using NorthWind.Membership.Frontend.RazorViews.ViewModels
+@using NorthWind.RazorComponents.Validators
+
+<EditForm Model="User" OnValidSubmit="User.Register">
+    <ModelValidator Validator="User.Validator" @ref="User.ModelValidatorComponentReference" />
+    <ValidationSummary />
+
+    <div class="form-group mb-3">
+        <label for="firstName">Nombre</label>
+        <InputText class="form-control" id="firstName" placeholder="Nombre" @bind-Value="User.FirstName" />
+        <ValidationMessage For="() => User.FirstName" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="lastName">Apellido</label>
+        <InputText class="form-control" id="lastName" placeholder="Apellido" @bind-Value="User.LastName" />
+        <ValidationMessage For="() => User.LastName" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="email">Correo electrónico</label>
+        <InputText class="form-control" id="email" type="email" placeholder="correo@ejemplo.com" @bind-Value="User.Email" />
+        <ValidationMessage For="() => User.Email" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="password">Contraseña</label>
+        <InputText class="form-control" id="password" type="password" placeholder="Contraseña" @bind-Value="User.Password" />
+        <ValidationMessage For="() => User.Password" />
+    </div>
+
+    <div class="row p-3">
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </div>
+    </div>
+</EditForm>
+
+<hr />
+
+@if (!string.IsNullOrWhiteSpace(User.InformationMessage))
+{
+    <div class="alert alert-info">@User.InformationMessage</div>
+}
+
+@code {
+    [Parameter]
+    public UserRegistrationViewModel User { get; set; } = default!;
+}

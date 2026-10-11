@@ -1,0 +1,10 @@
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore;
+global using NorthWind.Membership.Backend.AspNetIdentity.Entities;
+global using NorthWind.Membership.Backend.Core.Dtos.UserLogin;
+global using NorthWind.Membership.Backend.Core.Interfaces.Common;
+global using NorthWind.Membership.Entities.Dtos.UserRegistration;
+global using NorthWind.Membership.Entities.Dtos.UserLogin;
+global using NorthWind.Result.Entities;
+global using NorthWind.Validation.Entities.ValueObjects;

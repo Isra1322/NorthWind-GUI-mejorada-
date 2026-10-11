@@ -1,0 +1,16 @@
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\bin\Debug\net8.0\NorthWind.ValidationService.FluentValidation.deps.json
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\bin\Debug\net8.0\NorthWind.ValidationService.FluentValidation.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\bin\Debug\net8.0\NorthWind.ValidationService.FluentValidation.pdb
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\bin\Debug\net8.0\NorthWind.Validation.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\bin\Debug\net8.0\NorthWind.Validation.Entities.pdb
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\obj\Debug\net8.0\NorthWind.ValidationService.FluentValidation.csproj.AssemblyReference.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\obj\Debug\net8.0\NorthWind.ValidationService.FluentValidation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\obj\Debug\net8.0\NorthWind.ValidationService.FluentValidation.AssemblyInfoInputs.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\obj\Debug\net8.0\NorthWind.ValidationService.FluentValidation.AssemblyInfo.cs
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\obj\Debug\net8.0\NorthWind.ValidationService.FluentValidation.csproj.CoreCompileInputs.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\obj\Debug\net8.0\NorthWind.ValidationService.FluentValidation.sourcelink.json
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\obj\Debug\net8.0\NorthWin.B536FC6D.Up2Date
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\obj\Debug\net8.0\NorthWind.ValidationService.FluentValidation.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\obj\Debug\net8.0\refint\NorthWind.ValidationService.FluentValidation.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\obj\Debug\net8.0\NorthWind.ValidationService.FluentValidation.pdb
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.ValidationService.FluentValidation\obj\Debug\net8.0\ref\NorthWind.ValidationService.FluentValidation.dll

@@ -1,0 +1,11 @@
+global using Microsoft.AspNetCore.Components;
+global using Microsoft.AspNetCore.Components.Web;
+global using NorthWind.Sales.Entities.Dtos.CreateOrder;
+global using NorthWind.Sales.Frontend.BusinessObjects.Interfaces;
+global using NorthWind.Sales.Frontend.Views.Resources;
+global using NorthWind.Sales.Frontend.Views.ViewModels.CreateOrder;
+global using NorthWind.Validation.Entities.Interfaces;
+global using NorthWind.Validation.Entities.Abstractions;
+global using NorthWind.Validation.Entities.Enums;
+global using NorthWind.RazorComponents.Validators;
+global using NorthWind.Validation.Entities.ValueObjects;

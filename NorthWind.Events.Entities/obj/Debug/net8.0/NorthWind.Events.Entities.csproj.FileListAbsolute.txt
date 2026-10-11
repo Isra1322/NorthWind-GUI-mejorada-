@@ -1,0 +1,13 @@
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Events.Entities\bin\Debug\net8.0\NorthWind.Events.Entities.deps.json
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Events.Entities\bin\Debug\net8.0\NorthWind.Events.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Events.Entities\bin\Debug\net8.0\NorthWind.Events.Entities.pdb
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Events.Entities\obj\Debug\net8.0\NorthWind.Events.Entities.csproj.AssemblyReference.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Events.Entities\obj\Debug\net8.0\NorthWind.Events.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Events.Entities\obj\Debug\net8.0\NorthWind.Events.Entities.AssemblyInfoInputs.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Events.Entities\obj\Debug\net8.0\NorthWind.Events.Entities.AssemblyInfo.cs
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Events.Entities\obj\Debug\net8.0\NorthWind.Events.Entities.csproj.CoreCompileInputs.cache
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Events.Entities\obj\Debug\net8.0\NorthWind.Events.Entities.sourcelink.json
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Events.Entities\obj\Debug\net8.0\NorthWind.Events.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Events.Entities\obj\Debug\net8.0\refint\NorthWind.Events.Entities.dll
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Events.Entities\obj\Debug\net8.0\NorthWind.Events.Entities.pdb
+C:\Users\stali\Documents\Aplicaciones_Moviles\NorthWind (GUI mejorada)\NorthWind.Events.Entities\obj\Debug\net8.0\ref\NorthWind.Events.Entities.dll

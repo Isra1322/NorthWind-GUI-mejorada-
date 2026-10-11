@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\NorthWind.Sales.Backend.UseCases\NorthWind.Sales.Backend.UseCases.csproj" />
+    <ProjectReference Include="..\NorthWind.Sales.Backend.Controllers\NorthWind.Sales.Backend.Controllers.csproj" />
+    <ProjectReference Include="..\NorthWind.Sales.Backend.Repositories\NorthWind.Sales.Backend.Repositories.csproj" />
+    <ProjectReference Include="..\NorthWind.Sales.Backend.Presenters\NorthWind.Sales.Backend.Presenters.csproj" />
+    <ProjectReference Include="..\NorthWind.Sales.Backend.DataContexts.EFCore\NorthWind.Sales.Backend.DataContexts.EFCore.csproj" />
+    <ProjectReference Include="..\NorthWind.Sales.Validators.Entities\NorthWind.Sales.Validators.Entities.csproj" />
+    <ProjectReference Include="..\NorthWind.ValidationService.FluentValidation\NorthWind.ValidationService.FluentValidation.csproj" />
+    <ProjectReference Include="..\NorthWind.Exceptions.Entities\NorthWind.Exceptions.Entities.csproj" />
+    <ProjectReference Include="..\NorthWind.Events.Entities\NorthWind.Events.Entities.csproj" />
+    <ProjectReference Include="..\NorthWind.Sales.Backend.SmtpGateways\NorthWind.Sales.Backend.SmtpGateways.csproj" />
+    <ProjectReference Include="..\NorthWind.DomainLogs.DataContexts.EFCore\NorthWind.DomainLogs.DataContexts.EFCore.csproj" />
+    <ProjectReference Include="..\NorthWind.Transactions.Entities\NorthWind.Transactions.Entities.csproj" />
+    <ProjectReference Include="..\NorthWind.UserServices\NorthWind.UserServices.csproj" />
+    <ProjectReference Include="..\NorthWind.Membership.Backend.Core\NorthWind.Membership.Backend.Core.csproj" />
+    <ProjectReference Include="..\NorthWind.Membership.Backend.AspNetIdentity\NorthWind.Membership.Backend.AspNetIdentity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

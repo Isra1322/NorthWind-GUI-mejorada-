@@ -1,0 +1,44 @@
+using NorthWind.Membership.Backend.Core.Dtos.UserLogin;
+using NorthWind.Membership.Backend.Core.Interfaces.Common;
+using NorthWind.Membership.Backend.Core.Interfaces.UserLogin;
+using NorthWind.Membership.Entities.Dtos.UserLogin;
+using NorthWind.Result.Entities;
+using NorthWind.Validation.Entities.Interfaces;
+using NorthWind.Validation.Entities.ValueObjects;
+
+namespace NorthWind.Membership.Backend.Core.UseCases.UserLogin;
+
+internal class UserLoginInteractor(
+    IMembershipService membershipService,
+    IUserLoginOutputPort presenter,
+    IModelValidatorHub<UserCredentialsDto> validationService)
+    : IUserLoginInputPort
+{
+    public async Task Handle(UserCredentialsDto userData)
+    {
+        Result<UserDto, IEnumerable<ValidationError>> result;
+
+        if (!await validationService.Validate(userData))
+        {
+            result = new(validationService.Errors);
+        }
+        else
+        {
+            var user = await membershipService.GetUserByCredentials(userData);
+            if (user == null)
+            {
+                result = new([
+                    new ValidationError(
+                        nameof(userData.Password),
+                        "Las credenciales de usuario proporcionadas son incorrectas.")
+                ]);
+            }
+            else
+            {
+                result = new(user);
+            }
+        }
+
+        await presenter.Handle(result);
+    }
+}

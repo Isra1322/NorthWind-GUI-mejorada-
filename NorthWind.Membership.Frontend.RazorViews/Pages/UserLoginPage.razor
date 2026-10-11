@@ -1,0 +1,45 @@
+@page "/user/login"
+@using NorthWind.Membership.Frontend.RazorViews.ViewModels
+@using NorthWind.Membership.Frontend.RazorViews.Components
+@using NorthWind.RazorComponents.Exceptions
+@inject UserLoginViewModel ViewModel
+@inject NavigationManager NavigationManager
+
+<PageTitle>Iniciar sesión</PageTitle>
+
+<ErrorBoundary @ref="ErrorBoundaryRef">
+    <ChildContent>
+        <UserLoginComponent ViewModel="ViewModel" />
+    </ChildContent>
+    <ErrorContent>
+        <ExceptionDisplay Exception="context" />
+        <button class="btn btn-danger" @onclick="Recover">Aceptar</button>
+    </ErrorContent>
+</ErrorBoundary>
+
+@code {
+    private const string RouteTemplate = "/user/login";
+    private ErrorBoundary? ErrorBoundaryRef;
+
+    private void Recover()
+    {
+        ErrorBoundaryRef?.Recover();
+    }
+
+    protected override void OnInitialized()
+    {
+        ViewModel.OnLogin += OnLogin;
+    }
+
+    private void OnLogin()
+    {
+        if (NavigationManager.Uri.EndsWith(RouteTemplate, StringComparison.OrdinalIgnoreCase))
+        {
+            NavigationManager.NavigateTo("");
+        }
+        else
+        {
+            NavigationManager.NavigateTo(NavigationManager.Uri);
+        }
+    }
+}

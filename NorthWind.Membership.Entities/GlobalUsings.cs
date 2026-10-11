@@ -1,0 +1,9 @@
+global using NorthWind.Result.Entities;
+global using NorthWind.Validation.Entities.Interfaces;
+global using NorthWind.Validation.Entities.Abstractions;
+global using NorthWind.Validation.Entities.ValueObjects;
+global using NorthWind.Membership.Entities.Dtos.UserRegistration;
+global using NorthWind.Membership.Entities.Validators.UserRegistration;
+global using NorthWind.Membership.Entities.Dtos.UserLogin;
+global using NorthWind.Membership.Entities.Validators.UserLogin;
+global using NorthWind.Membership.Entities.ValueObjects;
