@@ -16,14 +16,14 @@ internal class FluentValidationService<T> : IValidationService<T>
 
     public async Task<IEnumerable<ValidationError>> Validate(T model)
     {
-        var Result = await Wrapper.ValidateAsync(model);
-        IEnumerable<ValidationError> Errors = default;
-        if (!Result.IsValid)
+        var result = await Wrapper.ValidateAsync(model);
+        IEnumerable<ValidationError> errors = [];
+        if (!result.IsValid)
         {
-            Errors = Result.Errors
+            errors = result.Errors
                 .Select(e => new ValidationError(
                     e.PropertyName, e.ErrorMessage));
         }
-        return Errors;
+        return errors;
     }
 }

@@ -8,9 +8,19 @@ public static class DependencyContainer
         Action<IHttpClientBuilder>? configureHttpClientBuilder = null)
     {
         services.AddExceptionDelegatingHandler();
-        var builder = services.AddHttpClient<ICreateOrderGateway, CreateOrderGateway>(configureHttpClient)
+
+        var orderBuilder = services.AddHttpClient<ICreateOrderGateway, CreateOrderGateway>(configureHttpClient)
             .AddHttpMessageHandler<ExceptionDelegatingHandler>();
-        configureHttpClientBuilder?.Invoke(builder);
+        configureHttpClientBuilder?.Invoke(orderBuilder);
+
+        var customerBuilder = services.AddHttpClient<ICustomerGateway, CustomerGateway>(configureHttpClient)
+            .AddHttpMessageHandler<ExceptionDelegatingHandler>();
+        configureHttpClientBuilder?.Invoke(customerBuilder);
+
+        var productBuilder = services.AddHttpClient<IProductGateway, ProductGateway>(configureHttpClient)
+            .AddHttpMessageHandler<ExceptionDelegatingHandler>();
+        configureHttpClientBuilder?.Invoke(productBuilder);
+
         return services;
     }
 }

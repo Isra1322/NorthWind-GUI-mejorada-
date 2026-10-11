@@ -1,4 +1,4 @@
-﻿namespace NorthWind.DomainLogs.Entities.ValueObjects;
+namespace NorthWind.DomainLogs.Entities.ValueObjects;
 
 public class DomainLog
 {
@@ -9,7 +9,11 @@ public class DomainLog
         Description = description;
     }
 
-    protected DomainLog() { }
+    protected DomainLog()
+    {
+        User = default!;
+        Description = default!;
+    }
 
     public DateTime DateTime { get; private set; }
     public string User { get; private set; }

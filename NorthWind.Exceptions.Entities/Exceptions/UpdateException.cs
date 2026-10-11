@@ -1,4 +1,4 @@
-﻿namespace NorthWind.Exceptions.Entities.Exceptions;
+namespace NorthWind.Exceptions.Entities.Exceptions;
 
 public class UpdateException : Exception
 {
@@ -7,5 +7,5 @@ public class UpdateException : Exception
     public UpdateException(string message, Exception innerException) : base(message, innerException) { }
     public UpdateException(Exception exception, IEnumerable<string> entities) : base(exception.Message, exception) =>
         Entities = entities;
-    public IEnumerable<string> Entities { get; }
+    public IEnumerable<string> Entities { get; } = [];
 }

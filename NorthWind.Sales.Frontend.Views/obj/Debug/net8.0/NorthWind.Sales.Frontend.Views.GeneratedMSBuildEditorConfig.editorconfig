@@ -27,6 +27,14 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDcmVhdGVPcmRlckNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/stali/Documents/Aplicaciones_Moviles/NorthWind (GUI mejorada)/NorthWind.Sales.Frontend.Views/Components/CustomerSearchModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDdXN0b21lclNlYXJjaE1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/stali/Documents/Aplicaciones_Moviles/NorthWind (GUI mejorada)/NorthWind.Sales.Frontend.Views/Components/ProductSearchModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQcm9kdWN0U2VhcmNoTW9kYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/stali/Documents/Aplicaciones_Moviles/NorthWind (GUI mejorada)/NorthWind.Sales.Frontend.Views/Pages/CreateOrder.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlT3JkZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,6 +1,11 @@
 global using Microsoft.AspNetCore.Components;
 global using Microsoft.AspNetCore.Components.Web;
 global using NorthWind.Sales.Entities.Dtos.CreateOrder;
+global using NorthWind.Sales.Entities.Dtos.Common;
+global using NorthWind.Sales.Entities.Dtos.CustomerSearch;
+global using NorthWind.Sales.Entities.Dtos.ProductSearch;
+global using NorthWind.Sales.Entities.Dtos.OrderInvoice;
+global using NorthWind.Sales.Entities.ValueObjects;
 global using NorthWind.Sales.Frontend.BusinessObjects.Interfaces;
 global using NorthWind.Sales.Frontend.Views.Resources;
 global using NorthWind.Sales.Frontend.Views.ViewModels.CreateOrder;

@@ -1,0 +1,244 @@
+@namespace NorthWind.Sales.Frontend.Views.Components
+@inject IProductGateway ProductGateway
+
+@if (IsOpen)
+{
+    <div class="modal fade show" tabindex="-1" style="display: block; background: rgba(0,0,0,0.5);" role="dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content shadow-lg border-0">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">
+                        <i class="bi bi-box-seam me-2"></i>@Title
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" aria-label="Close" @onclick="CloseModal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-light">
+                            📦
+                        </span>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Buscar por Nombre o ID de Producto..."
+                               value="@SearchTerm"
+                               @oninput="OnSearchInputChanged"
+                               @onkeydown="OnKeyDown"
+                               autofocus />
+                        <button class="btn btn-outline-success" type="button" @onclick="ExecuteSearch" disabled="@IsLoading">
+                            Buscar
+                        </button>
+                    </div>
+
+                    @if (IsLoading)
+                    {
+                        <div class="text-center py-4">
+                            <div class="spinner-border text-success" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                            <p class="mt-2 text-muted">Buscando productos disponibles...</p>
+                        </div>
+                    }
+                    else if (PagedProducts == null || PagedProducts.Items.Count == 0)
+                    {
+                        <div class="alert alert-warning text-center my-3">
+                            No se encontraron productos disponibles en stock.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width: 15%;">ID</th>
+                                        <th style="width: 45%;">Nombre del Producto</th>
+                                        <th style="width: 20%;" class="text-end">Precio Unitario</th>
+                                        <th style="width: 10%;" class="text-center">Stock</th>
+                                        <th style="width: 10%;" class="text-center">Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var product in PagedProducts.Items)
+                                    {
+                                        <tr style="cursor: pointer;" @onclick="() => SelectProduct(product)">
+                                            <td>
+                                                <span class="badge bg-secondary font-monospace">@product.ProductId</span>
+                                            </td>
+                                            <td class="fw-semibold">@product.ProductName</td>
+                                            <td class="text-end font-monospace text-primary fw-bold">
+                                                $ @product.UnitPrice.ToString("N2")
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="badge bg-success">
+                                                    @product.UnitsInStock u.
+                                                </span>
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button"
+                                                        class="btn btn-sm btn-primary"
+                                                        @onclick:stopPropagation="true"
+                                                        @onclick="() => SelectProduct(product)">
+                                                    Seleccionar
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Paginación -->
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-muted">
+                                Total: <strong>@PagedProducts.TotalCount</strong> productos con stock activo
+                            </small>
+                            <div class="btn-group" role="group">
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-secondary"
+                                        disabled="@(!PagedProducts.HasPreviousPage || IsLoading)"
+                                        @onclick="PreviousPage">
+                                    &laquo; Anterior
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary disabled" disabled>
+                                    Página @PagedProducts.Page de @Math.Max(1, PagedProducts.TotalPages)
+                                </button>
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-secondary"
+                                        disabled="@(!PagedProducts.HasNextPage || IsLoading)"
+                                        @onclick="NextPage">
+                                    Siguiente &raquo;
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public bool IsOpen { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> IsOpenChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<ProductSearchDto> OnProductSelected { get; set; }
+
+    [Parameter]
+    public string Title { get; set; } = "Buscar Producto Disponible";
+
+    private string SearchTerm { get; set; } = string.Empty;
+    private int CurrentPage { get; set; } = 1;
+    private const int PageSize = 5;
+    private bool IsLoading { get; set; }
+    private PagedResult<ProductSearchDto>? PagedProducts { get; set; }
+    private System.Threading.CancellationTokenSource? _debounceCts;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (IsOpen && PagedProducts == null)
+        {
+            await LoadProductsAsync();
+        }
+    }
+
+    private async Task OnSearchInputChanged(ChangeEventArgs e)
+    {
+        SearchTerm = e.Value?.ToString() ?? string.Empty;
+        CurrentPage = 1;
+
+        _debounceCts?.Cancel();
+        _debounceCts = new System.Threading.CancellationTokenSource();
+        var token = _debounceCts.Token;
+
+        try
+        {
+            await Task.Delay(300, token);
+            if (!token.IsCancellationRequested)
+            {
+                await LoadProductsAsync();
+            }
+        }
+        catch (TaskCanceledException)
+        {
+            // Ignore cancellation from debounce
+        }
+    }
+
+    private async Task OnKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await ExecuteSearch();
+        }
+        else if (e.Key == "Escape")
+        {
+            await CloseModal();
+        }
+    }
+
+    private async Task ExecuteSearch()
+    {
+        CurrentPage = 1;
+        await LoadProductsAsync();
+    }
+
+    private async Task PreviousPage()
+    {
+        if (PagedProducts != null && PagedProducts.HasPreviousPage)
+        {
+            CurrentPage--;
+            await LoadProductsAsync();
+        }
+    }
+
+    private async Task NextPage()
+    {
+        if (PagedProducts != null && PagedProducts.HasNextPage)
+        {
+            CurrentPage++;
+            await LoadProductsAsync();
+        }
+    }
+
+    private async Task LoadProductsAsync()
+    {
+        IsLoading = true;
+        StateHasChanged();
+
+        try
+        {
+            PagedProducts = await ProductGateway.SearchAvailableProductsAsync(
+                searchTerm: SearchTerm,
+                page: CurrentPage,
+                pageSize: PageSize);
+        }
+        catch (Exception)
+        {
+            PagedProducts = new PagedResult<ProductSearchDto>([], 0, CurrentPage, PageSize);
+        }
+        finally
+        {
+            IsLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task SelectProduct(ProductSearchDto product)
+    {
+        await OnProductSelected.InvokeAsync(product);
+        await CloseModal();
+    }
+
+    private async Task CloseModal()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}

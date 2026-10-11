@@ -1,4 +1,4 @@
-﻿namespace NorthWind.Exceptions.Entities.Extensions;
+namespace NorthWind.Exceptions.Entities.Extensions;
 
 internal static class HttpContextExtensions
 {
@@ -6,7 +6,7 @@ internal static class HttpContextExtensions
         this HttpContext context, ProblemDetails details)
     {
         context.Response.ContentType = "application/problem+json";
-        context.Response.StatusCode = details.Status.Value;
+        context.Response.StatusCode = details.Status ?? StatusCodes.Status500InternalServerError;
         var Stream = context.Response.Body;
         await JsonSerializer.SerializeAsync(Stream, details);
     }
