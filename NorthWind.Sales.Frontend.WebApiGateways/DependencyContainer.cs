@@ -21,6 +21,10 @@ public static class DependencyContainer
             .AddHttpMessageHandler<ExceptionDelegatingHandler>();
         configureHttpClientBuilder?.Invoke(productBuilder);
 
+        var invoiceBuilder = services.AddHttpClient<IOrderInvoiceGateway, OrderInvoiceGateway>(configureHttpClient)
+            .AddHttpMessageHandler<ExceptionDelegatingHandler>();
+        configureHttpClientBuilder?.Invoke(invoiceBuilder);
+
         return services;
     }
 }

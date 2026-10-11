@@ -1,0 +1,222 @@
+@namespace NorthWind.Sales.Frontend.Views.Components
+@inject IJSRuntime JS
+
+<div class="invoice-wrapper">
+    <!-- Barra de acciones (oculta en la impresión) -->
+    <div class="d-flex justify-content-between align-items-center mb-3 no-print">
+        @if (ShowBackButton)
+        {
+            <button type="button" class="btn btn-outline-secondary" @onclick="GoBack">
+                &laquo; Volver al Historial
+            </button>
+        }
+        else
+        {
+            <div></div>
+        }
+        <button type="button" class="btn btn-primary d-flex align-items-center shadow-sm" @onclick="PrintInvoice">
+            <span class="me-2">🖨️</span> Imprimir / Guardar en PDF
+        </button>
+    </div>
+
+    <!-- Contenedor Oficial de Factura (Visible e Imprimible) -->
+    <div class="card shadow border printable-invoice p-4 bg-white">
+        <!-- Encabezado Corporativo -->
+        <div class="row align-items-center pb-3 border-bottom mb-4">
+            <div class="col-sm-7">
+                <div class="d-flex align-items-center mb-2">
+                    <span class="fs-2 me-2">🌐</span>
+                    <div>
+                        <h3 class="mb-0 fw-bold text-primary">NorthWind Sales Inc.</h3>
+                        <small class="text-muted">Punto de Venta & Facturación Electrónica</small>
+                    </div>
+                </div>
+                <p class="mb-0 text-muted small">
+                    <strong>RUC / NIT:</strong> 1792345678001<br />
+                    <strong>Dirección Matriz:</strong> Av. Amazonas N34-123 y Naciones Unidas<br />
+                    <strong>Teléfono:</strong> +593 (2) 299-1700 | <strong>Email:</strong> facturacion@northwind.com
+                </p>
+            </div>
+            <div class="col-sm-5 text-sm-end mt-3 mt-sm-0">
+                <div class="border border-2 border-primary rounded p-3 bg-light text-center">
+                    <span class="text-uppercase fw-bold text-primary d-block small">Comprobante de Venta</span>
+                    <h4 class="mb-1 fw-bold font-monospace text-dark">
+                        @($"FACTURA Nº {Invoice.OrderId:D6}")
+                    </h4>
+                    <div class="text-muted small">
+                        <strong>Emisión:</strong> @Invoice.OrderDate.ToString("dd/MM/yyyy HH:mm")
+                    </div>
+                    <span class="badge bg-success mt-1">AUTORIZADA / PAGADA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Información del Cliente -->
+        <div class="card bg-light border-0 mb-4 p-3 rounded">
+            <h6 class="text-secondary fw-bold text-uppercase border-bottom pb-2 mb-3 small">
+                Datos del Adquirente / Cliente
+            </h6>
+            <div class="row g-2">
+                <div class="col-md-6">
+                    <div class="small text-muted">Razón Social / Nombre:</div>
+                    <div class="fw-bold fs-6">@Invoice.CompanyName</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="small text-muted">Código Cliente:</div>
+                    <div class="fw-semibold font-monospace">@Invoice.CustomerId</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="small text-muted">Contacto:</div>
+                    <div class="fw-semibold">@(Invoice.ContactName ?? "N/A")</div>
+                </div>
+
+                <div class="col-md-6 mt-2">
+                    <div class="small text-muted">Dirección de Entrega:</div>
+                    <div class="fw-semibold">@(Invoice.Address ?? "N/A")</div>
+                </div>
+                <div class="col-md-3 mt-2">
+                    <div class="small text-muted">Ciudad / País:</div>
+                    <div class="fw-semibold">@Invoice.City, @Invoice.Country</div>
+                </div>
+                <div class="col-md-3 mt-2">
+                    <div class="small text-muted">Código Postal:</div>
+                    <div class="fw-semibold font-monospace">@(Invoice.PostalCode ?? "N/A")</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de Detalle de Productos -->
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered table-striped align-middle mb-0">
+                <thead class="table-primary text-center">
+                    <tr>
+                        <th style="width: 5%;">#</th>
+                        <th style="width: 12%;">Código</th>
+                        <th style="width: 43%;" class="text-start">Descripción del Producto</th>
+                        <th style="width: 15%;" class="text-end">Precio Unitario</th>
+                        <th style="width: 10%;">Cant.</th>
+                        <th style="width: 15%;" class="text-end">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int index = 1;
+                    }
+                    @foreach (var detail in Invoice.Details)
+                    {
+                        <tr>
+                            <td class="text-center font-monospace small">@(index++)</td>
+                            <td class="text-center font-monospace">
+                                <span class="badge bg-secondary">@detail.ProductId</span>
+                            </td>
+                            <td class="fw-semibold">@detail.ProductName</td>
+                            <td class="text-end font-monospace">$ @detail.UnitPrice.ToString("N2")</td>
+                            <td class="text-center fw-bold">@detail.Quantity</td>
+                            <td class="text-end font-monospace fw-bold text-primary">
+                                $ @detail.Total.ToString("N2")
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Liquidación de Totales -->
+        <div class="row justify-content-end mb-4">
+            <div class="col-md-5">
+                <table class="table table-sm table-bordered mb-0">
+                    <tbody>
+                        <tr>
+                            <td class="text-muted fw-semibold">Subtotal Neto:</td>
+                            <td class="text-end font-monospace fw-bold">$ @Invoice.Subtotal.ToString("N2")</td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted fw-semibold">IVA (15%):</td>
+                            <td class="text-end font-monospace fw-bold text-secondary">$ @Invoice.Vat.ToString("N2")</td>
+                        </tr>
+                        <tr class="table-success border-2">
+                            <td class="fs-5 fw-bold text-dark">TOTAL FACTURA:</td>
+                            <td class="fs-5 text-end font-monospace fw-bold text-success">
+                                $ @Invoice.Total.ToString("N2")
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pie de Factura / Cláusulas -->
+        <div class="border-top pt-3 text-center text-muted small">
+            <p class="mb-1">
+                Comprobante electrónico emitido conforme a las normas tributarias vigentes.
+            </p>
+            <p class="mb-0">
+                ¡Gracias por su compra en <strong>NorthWind Sales</strong>! • Soporte al cliente: 1-800-NORTHWIND
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    @@media print {
+        /* Ocultar elementos irrelevantes de la página */
+        nav, .navbar, .top-row, .sidebar, .no-print, header, footer, button, .btn {
+            display: none !important;
+        }
+
+        body {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .invoice-wrapper {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .printable-invoice {
+            box-shadow: none !important;
+            border: none !important;
+            padding: 10px !important;
+            width: 100% !important;
+        }
+
+        .table-primary {
+            background-color: #e9ecef !important;
+            color: #000000 !important;
+        }
+
+        .table-success {
+            background-color: #d1e7dd !important;
+        }
+
+        .badge {
+            border: 1px solid #000 !important;
+            color: #000 !important;
+            background: transparent !important;
+        }
+    }
+</style>
+
+@code {
+    [Parameter]
+    public OrderInvoiceDto Invoice { get; set; } = default!;
+
+    [Parameter]
+    public EventCallback OnBack { get; set; }
+
+    [Parameter]
+    public bool ShowBackButton { get; set; } = true;
+
+    private async Task PrintInvoice()
+    {
+        await JS.InvokeVoidAsync("window.print");
+    }
+
+    private async Task GoBack()
+    {
+        await OnBack.InvokeAsync();
+    }
+}

@@ -1,0 +1,280 @@
+@page "/invoices"
+@page "/orderhistory"
+@attribute [Authorize]
+@namespace NorthWind.Sales.Frontend.Views.Pages
+@inject IOrderInvoiceGateway InvoiceGateway
+@inject ICustomerGateway CustomerGateway
+
+<PageTitle>Consultar Facturas - NorthWind Sales</PageTitle>
+
+<div class="container-fluid py-3">
+    @if (SelectedInvoice != null)
+    {
+        <!-- Vista de Detalle / Factura Reconstruida para Impresión/PDF -->
+        <InvoiceDetailComponent Invoice="SelectedInvoice" OnBack="BackToList" />
+    }
+    else
+    {
+        <!-- Vista de Búsqueda e Historial de Facturas -->
+        <div class="card shadow-sm border-0 mb-4 no-print">
+            <div class="card-header bg-primary text-white py-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">
+                        📑 Consulta y Búsqueda Inteligente de Facturas
+                    </h4>
+                    <span class="badge bg-light text-primary fs-6">Punto de Venta</span>
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <p class="text-muted mb-3">
+                    Ingrese el <strong>Número de Factura</strong> (ej. <code>1</code>, <code>2</code>) o el <strong>Código de Cliente</strong> (ej. <code>ALFKI</code>, <code>ANATR</code>) para consultar el historial y visualizar el comprobante.
+                </p>
+
+                <div class="row g-2 align-items-center">
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <span class="input-group-text bg-light">🔍</span>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Número de Factura (ID) o Código / Nombre de Cliente..."
+                                   @bind="SearchInput"
+                                   @bind:event="oninput"
+                                   @onkeydown="OnKeyDown"
+                                   autofocus />
+                            <button class="btn btn-primary" type="button" @onclick="ExecuteSearch" disabled="@IsLoading">
+                                @(IsLoading ? "Buscando..." : "Buscar")
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-outline-secondary w-100" @onclick="() => IsCustomerModalOpen = true">
+                            👥 Seleccionar Cliente...
+                        </button>
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-outline-danger w-100" @onclick="ClearSearch">
+                            Limpiar
+                        </button>
+                    </div>
+                </div>
+
+                @if (!string.IsNullOrWhiteSpace(ErrorMessage))
+                {
+                    <div class="alert alert-warning mt-3 mb-0 d-flex align-items-center" role="alert">
+                        <span class="me-2">⚠️</span>
+                        <div>@ErrorMessage</div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        @if (IsLoading)
+        {
+            <div class="text-center py-5 no-print">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Cargando...</span>
+                </div>
+                <p class="mt-2 text-muted">Consultando facturas en el servidor...</p>
+            </div>
+        }
+        else if (Invoices != null && Invoices.Count > 0)
+        {
+            <div class="card shadow-sm border-0 no-print">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center py-3">
+                    <h5 class="mb-0 text-dark">
+                        Facturas Encontradas (@Invoices.Count)
+                    </h5>
+                    <small class="text-muted">Haga clic en <strong>"Ver Factura"</strong> para visualizar o exportar en PDF</small>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped mb-0 align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th style="width: 12%;">Nº Factura</th>
+                                    <th style="width: 18%;">Fecha de Emisión</th>
+                                    <th style="width: 25%;">Cliente</th>
+                                    <th style="width: 15%;" class="text-end">Subtotal</th>
+                                    <th style="width: 15%;" class="text-end">Total (IVA 15%)</th>
+                                    <th style="width: 15%;" class="text-center">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var inv in Invoices)
+                                {
+                                    <tr>
+                                        <td>
+                                            <span class="badge bg-primary font-monospace fs-6">
+                                                @($"INV-{inv.OrderId:D6}")
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <small class="text-muted">
+                                                @inv.OrderDate.ToString("dd/MM/yyyy HH:mm")
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <div class="fw-semibold">@inv.CompanyName</div>
+                                            <small class="text-muted">Código: @inv.CustomerId</small>
+                                        </td>
+                                        <td class="text-end font-monospace">
+                                            $ @inv.Subtotal.ToString("N2")
+                                        </td>
+                                        <td class="text-end font-monospace fw-bold text-success fs-6">
+                                            $ @inv.Total.ToString("N2")
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="button"
+                                                    class="btn btn-sm btn-outline-primary shadow-sm"
+                                                    @onclick="() => SelectInvoice(inv)">
+                                                👁️ Ver Factura
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (HasSearched && (Invoices == null || Invoices.Count == 0))
+        {
+            <div class="card shadow-sm border-0 p-5 text-center text-muted no-print">
+                <p class="fs-4 mb-2">🔍 No se encontraron facturas</p>
+                <p class="mb-0">Verifique el número de orden o el código del cliente e intente nuevamente.</p>
+            </div>
+        }
+    }
+</div>
+
+<!-- Modal para seleccionar cliente y consultar sus facturas -->
+<CustomerSearchModal @bind-IsOpen="IsCustomerModalOpen"
+                     OnCustomerSelected="OnCustomerSelectedFromModal" />
+
+@code {
+    private string SearchInput { get; set; } = string.Empty;
+    private bool IsLoading { get; set; }
+    private bool HasSearched { get; set; }
+    private string ErrorMessage { get; set; } = string.Empty;
+    private List<OrderInvoiceDto>? Invoices { get; set; }
+    private OrderInvoiceDto? SelectedInvoice { get; set; }
+    private bool IsCustomerModalOpen { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Carga inicial por defecto: cargar órdenes de ALFKI como muestra
+        SearchInput = "ALFKI";
+        await ExecuteSearch();
+    }
+
+    private async Task OnKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await ExecuteSearch();
+        }
+    }
+
+    private async Task ExecuteSearch()
+    {
+        ErrorMessage = string.Empty;
+        string query = SearchInput.Trim();
+
+        if (string.IsNullOrWhiteSpace(query))
+        {
+            ErrorMessage = "Ingrese un número de factura o código de cliente.";
+            return;
+        }
+
+        IsLoading = true;
+        HasSearched = true;
+        Invoices = [];
+        SelectedInvoice = null;
+
+        try
+        {
+            // Caso 1: Si es un número entero, buscar por ID de Orden
+            if (int.TryParse(query, out int orderId))
+            {
+                var invoice = await InvoiceGateway.GetOrderInvoiceByIdAsync(orderId);
+                if (invoice != null)
+                {
+                    Invoices = [invoice];
+                    // Si buscó por ID específico, podemos mostrar directamente la factura
+                    SelectedInvoice = invoice;
+                }
+                else
+                {
+                    ErrorMessage = $"No se encontró ninguna factura con el número #{orderId}.";
+                }
+            }
+            else
+            {
+                // Caso 2: Buscar por CustomerId
+                var customerOrders = (await InvoiceGateway.GetOrdersByCustomerIdAsync(query)).ToList();
+                if (customerOrders.Count > 0)
+                {
+                    Invoices = customerOrders;
+                }
+                else
+                {
+                    // Caso 3: Buscar si coincide con el nombre de un cliente
+                    var customerResult = await CustomerGateway.SearchCustomersAsync(searchTerm: query, pageSize: 5);
+                    if (customerResult != null && customerResult.Items.Count > 0)
+                    {
+                        var matchingCustomerId = customerResult.Items.First().CustomerId;
+                        var orders = (await InvoiceGateway.GetOrdersByCustomerIdAsync(matchingCustomerId)).ToList();
+                        if (orders.Count > 0)
+                        {
+                            Invoices = orders;
+                        }
+                        else
+                        {
+                            ErrorMessage = $"El cliente '{customerResult.Items.First().CompanyName}' no registra órdenes de venta aún.";
+                        }
+                    }
+                    else
+                    {
+                        ErrorMessage = $"No se encontraron facturas para el cliente o código '{query}'.";
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"Ocurrió un error al consultar las facturas: {ex.Message}";
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private void SelectInvoice(OrderInvoiceDto invoice)
+    {
+        SelectedInvoice = invoice;
+    }
+
+    private void BackToList()
+    {
+        SelectedInvoice = null;
+    }
+
+    private void ClearSearch()
+    {
+        SearchInput = string.Empty;
+        ErrorMessage = string.Empty;
+        HasSearched = false;
+        Invoices = null;
+        SelectedInvoice = null;
+    }
+
+    private async Task OnCustomerSelectedFromModal(CustomerSearchDto customer)
+    {
+        SearchInput = customer.CustomerId;
+        await ExecuteSearch();
+    }
+}

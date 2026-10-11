@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NorthWind.Sales.Backend.UseCases")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4247d779d16ebaf8a995cad231705f7dbe862605")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1145d93b5ed5582a6e0a853a730d2288e7ae6753")]
 [assembly: System.Reflection.AssemblyProductAttribute("NorthWind.Sales.Backend.UseCases")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NorthWind.Sales.Backend.UseCases")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
